@@ -1,0 +1,27 @@
+.captcha {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.captcha .captchaScreen {
+    background-color: rgba(255, 255, 255, 1);
+    width: 300px;
+    height: 200px;
+    position: relative;
+}
+
+.captcha .captchaScreen .numberPlace {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.captcha .recycle {
+    width: 20px;
+    height: 20px;
+}
