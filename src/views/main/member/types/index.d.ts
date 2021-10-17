@@ -2,7 +2,7 @@ export interface PAGECONFIG {
     total: number
     page: number
     size: number
-    pageList: Array<PAGE>
+    pageList: Array<number>
     scrollStop: number
     mode: number
 }

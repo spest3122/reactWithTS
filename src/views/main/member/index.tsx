@@ -8,7 +8,7 @@ import { ROUTE } from '@src/routes/routes.js'
 import { PAGECONFIG, PAGE } from './types'
 
 const Member = (props: ROUTE) => {
-    const [list, setList] = useState([])
+    const [list, setList] = useState<Array<PAGE>>([])
     const [pageConfig, setPageConfig] = useState<PAGECONFIG>({
         total: 0,
         page: 0,
@@ -32,11 +32,15 @@ const Member = (props: ROUTE) => {
             { length: Math.ceil(totalNumber / 10) },
             (_, i) => i + 1
         )
-        setPageConfig((prev) => ({
-            ...prev,
-            total: totalNumber,
-            pageList: pageList,
-        }))
+        console.log(pageList, 9999)
+
+        setPageConfig(
+            (prev: PAGECONFIG): PAGECONFIG => ({
+                ...prev,
+                total: totalNumber,
+                pageList: pageList,
+            })
+        )
         if (pageConfig.mode === 2) {
             setList((prev) => [...prev, ...listData])
         } else if (pageConfig.mode === 1) {
@@ -44,8 +48,8 @@ const Member = (props: ROUTE) => {
         }
     }
 
-    const changePage = (move: number | string) => {
-        let page: number | string = pageConfig.page
+    const changePage = (move: string) => {
+        let page: number = pageConfig.page
         let list = pageConfig.pageList
         if (move === 'next') {
             page += 1
@@ -57,7 +61,7 @@ const Member = (props: ROUTE) => {
         if (page >= list[list.length - 1] || page < 0) {
             return
         }
-        setPageConfig((prev) => ({ ...prev, page: page, mode: 1 }))
+        setPageConfig((prev): PAGECONFIG => ({ ...prev, page: page, mode: 1 }))
     }
 
     const callNextUserList = debounce((e, pos) => {
