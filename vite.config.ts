@@ -10,4 +10,12 @@ export default defineConfig({
             '@api': path.resolve(__dirname, 'src/api'),
         },
     },
+    build: {
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
+        },
+    },
 })

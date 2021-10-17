@@ -32,7 +32,6 @@ const Member = (props: ROUTE) => {
             { length: Math.ceil(totalNumber / 10) },
             (_, i) => i + 1
         )
-        console.log(pageList, 9999)
 
         setPageConfig(
             (prev: PAGECONFIG): PAGECONFIG => ({
