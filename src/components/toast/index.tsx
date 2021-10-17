@@ -1,10 +1,11 @@
 import ReactDOM from 'react-dom'
+import { TOAST_STATE } from './toast'
 
 let delay = 2
-const Toast = (props) => {
+const Toast = (props: TOAST_STATE<string>) => {
     let { status, msg } = props
 
-    const matchColor = (color) => {
+    const matchColor = (color: string) => {
         switch (color) {
             case 'success':
                 return 'bg-green-500'
@@ -27,17 +28,18 @@ const Toast = (props) => {
 }
 
 const createToast = () => {
-    const createAndDestory = (msg, status) => {
+    const createAndDestory = (props: TOAST_STATE<string>) => {
         let toast = document.getElementById('toast')
-        ReactDOM.render(<Toast msg={msg} status={status} />, toast)
+        ReactDOM.render(<Toast msg={props.msg} status={props.status} />, toast)
         setTimeout(() => {
             ReactDOM.render(<></>, toast)
         }, delay * 1000)
     }
 
     return {
-        error: (msg) => createAndDestory(msg, 'error'),
-        success: (msg) => createAndDestory(msg, 'success'),
+        error: (msg: string) => createAndDestory({ msg: msg, status: 'error' }),
+        success: (msg: string) =>
+            createAndDestory({ msg: msg, status: 'success' }),
     }
 }
 

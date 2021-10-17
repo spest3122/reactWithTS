@@ -2,8 +2,9 @@ import { Switch } from 'react-router-dom'
 import { doAuth } from '@api'
 import Menu from '@src/views/main/menu'
 import { renderRoute } from '@src/routes/tool'
+import { ROUTE } from '@src/routes/routes.js'
 
-const Main = (props) => {
+const Main = (props: ROUTE) => {
     // useEffect(() => {
     //     async function callAuthWhenRefresh() {
     //         let res = await doAuth()

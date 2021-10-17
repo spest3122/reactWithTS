@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 /**
  * 預期功能
  * 1. url, headers, data, method能當作參數帶入(done)
@@ -9,7 +8,7 @@ import axios from 'axios'
 const outerUrl = 'https://l8-upgrade-apis.herokuapp.com'
 
 axios.interceptors.response.use(
-    function (response) {
+    (response) => {
         if (response.data.token !== undefined) {
             localStorage.setItem(
                 'Authorization',
@@ -18,7 +17,7 @@ axios.interceptors.response.use(
         }
         return response
     },
-    function (error) {
+    (error) => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
         return Promise.reject(error)
@@ -26,13 +25,13 @@ axios.interceptors.response.use(
 )
 
 axios.interceptors.request.use(
-    function (config) {
+    (config) => {
         // Do something before request is sent
-        config.headers.Authorization =
+        config.headers['Authorization'] =
             localStorage.getItem('Authorization') || ''
         return config
     },
-    function (error) {
+    (error) => {
         // Do something with request error
         return Promise.reject(error)
     }

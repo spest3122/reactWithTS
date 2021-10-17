@@ -6,8 +6,6 @@ import Captcha from '@src/views/login/captcha'
 import eyeOpen from '/image/open.png'
 import eyeClose from '/image/close.png'
 
-//Toast 不會重複出現
-
 const Login = () => {
     const [loginForm, setLoginForm] = useState({
         username: '',
@@ -15,9 +13,9 @@ const Login = () => {
         password: '',
         psdErrTip: false,
     })
-    const [pwdOpen, setPwdOpen] = useState(false)
-    const [captchaStatus, setCaptchaStatus] = useState(0) //0未驗證 1驗證中/驗證不過 2驗證通過
-    const captchaVerifyMethod = (val) => {
+    const [pwdOpen, setPwdOpen] = useState<boolean>(false)
+    const [captchaStatus, setCaptchaStatus] = useState<number>(0) //0未驗證 1驗證中/驗證不過 2驗證通過
+    const captchaVerifyMethod = (val: number) => {
         if (val === 2) {
             Toast.success('驗證通過')
         } else if (val === 1) {
@@ -85,7 +83,7 @@ const Login = () => {
                     <div className="mb-7 flex items-center relative">
                         <label
                             className="block w-10 text-gray-700 text-sm font-bold mr-2"
-                            for="username"
+                            htmlFor="username"
                         >
                             帳號
                         </label>
@@ -112,7 +110,7 @@ const Login = () => {
                     <div className="mb-6 flex items-center relative">
                         <label
                             className="block w-10 text-gray-700 text-sm font-bold mr-2"
-                            for="password"
+                            htmlFor="password"
                         >
                             密碼
                         </label>

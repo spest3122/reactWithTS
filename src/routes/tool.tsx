@@ -1,7 +1,8 @@
 import { Route } from 'react-router-dom'
+import { ROUTE } from './routes'
 
-const renderRoute = (routes, path = '') => {
-    return routes.map((route, index) => (
+const renderRoute = (routes: Array<ROUTE>, path = '') => {
+    return routes.map((route: ROUTE) => (
         <Route
             key={path + route.path}
             path={path + route.path}

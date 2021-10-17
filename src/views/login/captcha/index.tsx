@@ -1,14 +1,13 @@
 import { useEffect, useState, useRef } from 'react'
 import './captcha.css'
 import recycle from '/image/recycle.png'
+import { CLICKNUMBER, MODEENUM } from './captcha.js'
 
 /**
  * 數字驗證碼
  */
 
-const enumMode = ['>', '<']
-
-const threeRandomNumber = (mode) => {
+const threeRandomNumber = (): Array<CLICKNUMBER> => {
     /**
      * {
      *   press: true, //按過沒按過
@@ -33,11 +32,11 @@ const threeRandomNumber = (mode) => {
     return randomNumberAry
 }
 
-const Captcha = (props) => {
+const Captcha = (props: { endVerify: (n: number) => void }) => {
     const { endVerify } = props
-    const [threeNumber, setThreeNumber] = useState([])
-    const [randomMode, setRandomMode] = useState('')
-    const [result, setResult] = useState([])
+    const [threeNumber, setThreeNumber] = useState<Array<CLICKNUMBER>>([])
+    const [randomMode, setRandomMode] = useState<String>('')
+    const [result, setResult] = useState<Number[]>([])
     const captchaRef = useRef(null)
     //刷新驗證碼
     const onRefresh = () => {
@@ -47,10 +46,10 @@ const Captcha = (props) => {
     //設置驗證碼
     const setUpCaptcha = () => {
         const randomMode = Math.floor(Math.random() * 2)
-        const mode = enumMode[randomMode]
-        const randomNumber = threeRandomNumber(mode)
+        const mode = MODEENUM[randomMode]
+        const randomNumber = threeRandomNumber()
         setThreeNumber(randomNumber)
-        setRandomMode(enumMode[randomMode])
+        setRandomMode(MODEENUM[randomMode])
     }
     //校驗
     const verifyCode = () => {
