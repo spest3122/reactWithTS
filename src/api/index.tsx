@@ -1,9 +1,9 @@
 import helper from './preprocess'
-
+import { USER, USERLIST } from './api'
 //此處提供的僅是給各個頁面提供的api接口
 
 //登入
-const doLogin = (data) => {
+const doLogin = (data: USER) => {
     return helper({
         url: '/api/login',
         data: data,
@@ -12,7 +12,7 @@ const doLogin = (data) => {
 }
 
 //註冊
-const doRegister = (data) => {
+const doRegister = (data: USER) => {
     return helper({
         url: '/api/register',
         data: data,
@@ -39,7 +39,7 @@ const updateUserName = () => {
 }
 
 //取得使用者名稱
-const getUserName = (data) => {
+const getUserName = (data: USERLIST) => {
     return helper({
         url: '/api/users',
         data: data,
