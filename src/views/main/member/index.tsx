@@ -1,13 +1,15 @@
 import { renderRoute } from '@src/routes/tool'
-import { Switch, Link } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import { MemberContext } from './context'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { debounce } from 'lodash'
 import { getUserName } from '@api'
+import { ROUTE } from '@src/routes/routes.js'
+import { PAGECONFIG, PAGE } from './types'
 
-const Member = (props) => {
+const Member = (props: ROUTE) => {
     const [list, setList] = useState([])
-    const [pageConfig, setPageConfig] = useState({
+    const [pageConfig, setPageConfig] = useState<PAGECONFIG>({
         total: 0,
         page: 0,
         size: 10,
@@ -23,7 +25,6 @@ const Member = (props) => {
         let res = await getUserName({
             page: pageConfig.page,
             size: pageConfig.size,
-            pageList: [],
         })
         let listData = res.data.data.content
         let totalNumber = res.data.data.total
@@ -43,8 +44,8 @@ const Member = (props) => {
         }
     }
 
-    const changePage = (move) => {
-        let page = pageConfig.page
+    const changePage = (move: number | string) => {
+        let page: number | string = pageConfig.page
         let list = pageConfig.pageList
         if (move === 'next') {
             page += 1

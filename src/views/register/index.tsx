@@ -13,8 +13,8 @@ const Register = () => {
         secondPwd: '',
         secPwdErrTip: false,
     })
-    const [pwdOpen, setPwdOpen] = useState(false)
-    const [secpwdOpen, setSecpwdOpen] = useState(false)
+    const [pwdOpen, setPwdOpen] = useState<boolean>(false)
+    const [secpwdOpen, setSecpwdOpen] = useState<boolean>(false)
 
     const verifyForm = () => {
         let userErrTip = false
