@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
         "target": "ESNext",
         "useDefineForClassFields": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -17,9 +16,11 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "noImplicitAny": true,
+        "baseUrl": "./", //依tsconfig.json所在位置，做上層或下層或同屬該階層的定位
         "paths": {
-            "@api": ["./api"]
+            "@api": ["src/api/index.tsx"], //指向的是特定的檔案
+            "@src/*": ["src/*"] //或是該路徑下的所有檔案
         }
-    }
-    // "include": ["./src"]
+    },
+    "exclude": ["node_modules"] //排除node_modules
 }

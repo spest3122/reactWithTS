@@ -1,5 +1,5 @@
 import helper from './preprocess'
-import { USER, USERLIST } from './API'
+import { USER, USERLIST } from './api'
 //此處提供的僅是給各個頁面提供的api接口
 
 //登入

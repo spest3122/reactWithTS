@@ -1,9 +1,10 @@
+import { ROUTE } from '@src/routes/routes'
 import { Link } from 'react-router-dom'
 const Menu = ({ list }) => {
     const renderSideBar = (routes, path) => {
         return (
             <ul className="flex flex-col ml-2">
-                {routes.map((item) => {
+                {routes.map((item: ROUTE) => {
                     let nestRoutesExist = item?.routes
                     if (item.hidden) {
                         return null
