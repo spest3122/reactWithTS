@@ -47,14 +47,14 @@ const Member = (props: ROUTE) => {
         }
     }
 
-    const changePage = (move: string) => {
+    const changePage = (move: string | number) => {
         let page: number = pageConfig.page
         let list = pageConfig.pageList
         if (move === 'next') {
             page += 1
         } else if (move === 'prev') {
             page -= 1
-        } else {
+        } else if (typeof move === 'number') {
             page = move
         }
         if (page >= list[list.length - 1] || page < 0) {
